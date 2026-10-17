@@ -19,11 +19,17 @@ session_id: str = "default"
 
 @app.get("/")
 def root():
-return {"name": "AIO AI Backend", "status": "running"}
+return {
+"name": "AIO AI Backend",
+"status": "running",
+}
 
 @app.get("/health")
 def health():
-return {"status": "ok", "service": "aio-ai-backend"}
+return {
+"status": "ok",
+"service": "aio-ai-backend",
+}
 
 @app.post("/chat")
 def chat(request: ChatRequest):
@@ -47,7 +53,11 @@ return {
 
 @app.get("/memory/{session_id}")
 def get_memory(session_id: str):
-return {"session_id": session_id, "messages": []}
+return {
+"session_id": session_id,
+"messages": [],
+"storage_connected": False,
+}
 
 @app.delete("/memory/{session_id}")
 def clear_memory(session_id: str):
